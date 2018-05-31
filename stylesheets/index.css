@@ -191,7 +191,7 @@ body {
 
 /*Hover Effect*/
 .customButton:hover {
-    background-color: rgb(255, 187, 85);
+    background-color: rgb(73, 158, 255);
 
     transition: all 0.4s ease-in-out;
     transform: scale(1.1);
