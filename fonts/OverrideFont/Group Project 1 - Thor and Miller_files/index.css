@@ -32,9 +32,9 @@ body {
 
 /*Header Design*/
 .customHeader {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom, rgb(230, 230, 230, 0.6), rgba(192, 192, 192, 0.1));
 
-    height: 70px;
+    height: 80px;
     width: 100%;
 
     -webkit-box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.12);
@@ -46,9 +46,9 @@ body {
     align-items: center;
 }
 
+
 .headerBoxLeft {
     padding: 50px;
-
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -58,72 +58,11 @@ body {
     font-family: Override;
     font-size: 50px;
 
-    padding: 4px;
-}
+    color: rgb(255, 255, 255);
 
-
-
-
-/*Footer Design*/
-.customFooter {
-    background-color: rgb(255, 255, 255);
-
-    height: 48px;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.customFooter span {
-    font-family: Roboto;
-    font-size: 16px;
-
-    color: rgb(116, 116, 116);
-}
-
-.footerBoxLeft {
-    padding: 10px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.footerBoxRight {
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-
-
-
-/*Slogan Header*/
-.sloganHeader {
-    height: 40px;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.sloganBoxLeft {
-    font-family: Roboto;
-    font-size: 32px;
-    font-style: italic;
-
-    padding: 30px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-height: 1px;
+    -webkit-text-stroke-color: rgb(163, 163, 163);
 }
 
 
@@ -146,9 +85,9 @@ body {
     -moz-border-radius: 10px;
     border-radius: 10px;
 
-    -webkit-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow:    2px 1px 3px 2px rgba(0, 0, 0, 0.12);
-    box-shadow:         2px 1px 3px 2px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow:    2px 2px 3px 2px rgba(0, 0, 0, 0.12);
+    box-shadow:         2px 2px 3px 2px rgba(0, 0, 0, 0.12);
 
     display: flex;
     flex-direction: row;
@@ -168,8 +107,8 @@ body {
 
 /*App Button Design*/
 .customButton {
-        background-color: rgb(0, 119, 255);
-        color: rgb(255, 255, 255);
+        background-color: rgb(255, 153, 0);
+        color: rgb(0, 0, 0);
     
         font-size: 22px;
         font-weight: bold;
@@ -184,9 +123,9 @@ body {
         -moz-border-radius: 4px;
         border-radius: 4px;
 
-        -webkit-box-shadow: 2px 1px 3px 2px rgba(0, 0, 0, 0.12);
-        -moz-box-shadow:    2px 1px 3px 2px rgba(0, 0, 0, 0.12);
-        box-shadow:         2px 1px 3px 2px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.12);
+        -moz-box-shadow:    2px 2px 3px 2px rgba(0, 0, 0, 0.12);
+        box-shadow:         2px 2px 3px 2px rgba(0, 0, 0, 0.12);
     }
 
 /*Hover Effect*/
