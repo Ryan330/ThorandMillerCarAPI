@@ -60,17 +60,38 @@ nameOption.addEventListener("change", function () {
  console.log(dataModelURL);
 
 
+//**Year dropdown**/
 
+var yearOptionSelect = "[data-targetYear]";
+var yearOption = document.querySelector(yearOptionSelect);
+
+const dataYearURL = "https://api.fuelapi.com/v1/json/modelYears/52/&api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
+
+$.get(dataYearURL,
+  function(response) {
+    var modelYear = "";
+    response.forEach(function (data) {
+      
+      $(yearOption).append($("<option>", {
+        value: `${data}`,
+        text: `${data}`
+    
+     }));
+   });
+});
+
+//enables the Model Dropdown once year has been selected
+$('select[data-targetYear]').on("change", function(){
+  $('[data-targetModel]').removeAttr('disabled');
+});
 
 //**Model Dropdown**/
 var dataModelArray = [];
-
-
 var modelOptionSelect = "[data-targetModel]";
 var modelOption = document.querySelector(modelOptionSelect);
 
-
-$.get(dataModelURL, function (response) {
+$.get(dataModelURL, 
+  function (response) {
     response.forEach(function (data) {
         var modelMake = data.name;
         var carModelID = data.id;
@@ -82,7 +103,10 @@ $.get(dataModelURL, function (response) {
     });
 });
 
-
+yearOption.addEventListener("change", function(){
+  console.log(event.target.value);
+});
+  
   //    $.getJSON(dataModelURL,
   //        function (data) {
   //            var archetype = model;
@@ -96,8 +120,8 @@ $.get(dataModelURL, function (response) {
   //     model.prop('disabled', true);
   //     years.prop('disabled', true);
   // }
-});
 
+});
 // const dataYearsURL = "https://api.fuelapi.com/v1/json/modelYears/"+element.id+"/&api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1"
 
 // $('#data-targetModel').change(function () {

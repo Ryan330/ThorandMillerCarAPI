@@ -1,17 +1,55 @@
 /*Webpage Design*/
 body {
-    background-image: url("../images/backgrounds/mainBG.jpg");
-    background-size: 100%;
-
-    background-color: rgb(24, 24, 24);
+    background-image: url("../images/backgrounds/bg1.jpg");
+    background-size: cover;
 
     overflow-x: hidden;
 
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-}
 
+    animation: bgTransition 10s infinite;
+    animation-delay: 4s;
+}
+/*
+@keyframes bgTransition {
+    0% {
+        background-image: url("../images/backgrounds/bg1.jpg");
+        background-size: cover;
+
+        animation-delay: 4s;
+    }
+
+    25% {
+        background-image: url("../images/backgrounds/bg2.jpg");
+        background-size: cover;
+
+        animation-delay: 4s;
+    }
+
+    50% {
+        background-image: url("../images/backgrounds/bg3.jpg");
+        background-size: cover;
+
+        animation-delay: 4s;
+    }
+
+    75% {
+        background-image: url("../images/backgrounds/bg4.jpg");
+        background-size: cover;
+
+        animation-delay: 4s;
+    }
+
+    100% {
+        background-image: url("../images/backgrounds/bg5.jpg");
+        background-size: cover;
+
+        animation-delay: 4s;
+    }
+}
+*/
 .bodyWrapper {
     display: flex;
     flex-direction: column;
@@ -34,7 +72,7 @@ body {
 .customHeader {
     background-color: rgb(255, 255, 255);
 
-    height: 70px;
+    height: 80px;
     width: 100%;
 
     -webkit-box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.12);
@@ -54,13 +92,45 @@ body {
     justify-content: flex-start;
 }
 
+/*Normal Logo Font Size*/
+@media screen and (min-width: 600px) {
 .headerBoxLeft span {
     font-family: Override;
-    font-size: 50px;
+    font-size: 48px;
 
     padding: 4px;
+    }
 }
 
+/*Smaller 1 Logo Font Size*/
+@media screen and (max-width: 600px) {
+.headerBoxLeft span {
+    font-family: Override;
+    font-size: 38px;
+
+    padding: 4px;
+    }
+}
+
+/*Smaller 2 Logo Font Size*/
+@media screen and (max-width: 450px) {
+.headerBoxLeft span {
+    font-family: Override;
+    font-size: 30px;
+
+    padding: 4px;
+    }
+}
+
+/*Smaller 3 Logo Font Size*/
+@media screen and (max-width: 360px) {
+    .headerBoxLeft span {
+        font-family: Override;
+        font-size: 30px;
+    
+        padding: 0px;
+        }
+    }
 
 
 
@@ -126,6 +196,36 @@ body {
     justify-content: flex-start;
 }
 
+/*Normal Logo Font Size*/
+@media screen and (min-width: 600px) {
+.sloganBoxLeft span {
+    font-family: Roboto;
+    font-size: 32px;
+
+    padding: 4px;
+    }
+}
+
+/*Smaller 1 Logo Font Size*/
+@media screen and (max-width: 600px) {
+.sloganBoxLeft span {
+    font-family: Roboto;
+    font-size: 24px;
+
+    padding: 4px;
+    }
+}
+
+/*Smaller 2 Logo Font Size*/
+@media screen and (max-width: 450px) {
+.sloganBoxLeft span {
+    font-family: Roboto;
+    font-size: 16px;
+
+    padding: 4px;
+    }
+}
+
 
 
 
@@ -133,12 +233,10 @@ body {
 .contentBox {
     background-color: rgba(255, 255, 255, 0.8);
 
-    height: 150px;
-    width: 40%;
+    height: fit-content;
+    width: fit-content;
 
     padding: 14px;
-
-    white-space: nowrap;
 
     text-align: left;
 
@@ -162,7 +260,8 @@ body {
     font-family: Roboto;
     font-size: 24px;
 
-    height: 20px;
+    padding: 4px;
+
     width: 100%;
 }
 

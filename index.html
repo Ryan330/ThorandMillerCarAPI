@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli%7CRoboto:400,300,500,700,900">
     
 </head>
-<body>
+<body data-targetBG>
     
 
     <!--Webpage Container (Start)-->
@@ -99,32 +99,34 @@
             <br>
 
             
-            <!--App Container 2-->
+            <!--App Container 3-->
             <div class="appContainer">
 
                 <!--User Input Fields-->
                 <!--Car Make-->
-                <span>Make: 
+                <span> 
 
                     <select data-targetMake>
-
+                        <option value="Any Make">Any Make</option>
                     </select>
 
                 </span>
 
-                <!--Car Model-->
-                <span>Model: 
-
-                    <select data-targetModel>
-
-                    </select>
-
-                </span>
-
-                <!--Car Model-->
-                <span>Year: 
+                <!--Car Year-->
+                <span>
 
                     <select data-targetYear>
+                        <option value="Any Year">Any Year</option>
+                    </select>
+
+                </span>
+
+                                
+                <!--Car Model-->
+                <span> 
+
+                    <select data-targetModel disabled>
+                        <option value="Any Model">Any Model</option>
 
                     </select>
 
@@ -141,7 +143,7 @@
 
                 <!--User Input Fields-->
                 <!--Submit Button-->
-                <input type="submit" class="customButton" value="Submit">
+                <input type="submit" action= "submit" class="customButton" value="Submit">
 
             </div>
 
