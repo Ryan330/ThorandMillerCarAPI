@@ -60,7 +60,7 @@ nameOption.addEventListener("change", function () {
  console.log(dataModelURL);
 
 
-//get.commit
+
 
 //**Model Dropdown**/
 var dataModelArray = [];
