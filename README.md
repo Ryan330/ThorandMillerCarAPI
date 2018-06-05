@@ -3,8 +3,8 @@
 The Thor & Miller car search application allows the user to generate information and images of any car from any manufacturer based on the options they select.
 
 ## Authors
-* **Ryan Miller**
-* **Thor Denson**
+* **Ryan Miller** - [ryan](https://github.com/Ryan330)
+* **Thor Denson** - [thor](https://github.com/thordenson)
 
 ## Built With
 * HTML
