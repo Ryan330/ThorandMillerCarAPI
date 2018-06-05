@@ -15,33 +15,23 @@ var yearIDKey = localStorage.getItem("yearIDKey");
 console.log(yearIDKey);
 
 
-
-
 const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey+"&model="+modelIDKey+"&make="+makeIDKey+"&api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
  console.log(dataModelURL);
 
  $.get(dataModelURL,
     function(vehicleInfoArray) {
-        console.log(vehicleInfoArray);
         console.log(vehicleInfoArray[0].id);
         var vehicleID = vehicleInfoArray[0].id;
         const mediaURL = "https://api.fuelapi.com/v1/json/vehicle/"+vehicleID+"/?api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
         console.log(mediaURL);
 
         $.get(mediaURL, function(dataMedia){
-            console.log(dataMedia);
             console.log(dataMedia.products);
-
             createCard(dataMedia);
         
         });
     }
 );
-
-
-
-
-
 
 
 
@@ -92,7 +82,6 @@ function nextId() {
   console.log(sideImageUrl); //ToDo:  append the created DOM element****
 
   };
-
 
 
 
@@ -179,8 +168,6 @@ var imgURL = "https://api.fuelapi.com/v1/json/vehicle/19100/?api_key=daefd14b-9f
 //          var imgID = data.id;
 //          
 //        });
-//
-//
 //
 //
 //
