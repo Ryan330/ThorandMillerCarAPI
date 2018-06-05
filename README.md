@@ -18,6 +18,8 @@ The Thor & Miller car search application allows the user to generate information
 * Postman
 * Fuel Car Data API
 
+<img src="images/screenshots/screenShot1.png" width="600" height="350">
+
 ## Development Process
 
 ### -Concept-
