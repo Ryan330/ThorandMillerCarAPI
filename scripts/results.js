@@ -29,11 +29,17 @@ const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey
             console.log(dataMedia.products);
             createCard(dataMedia);
         
+        }).catch(function(error){
+            console.log(error);
+
         });
     }
-);
+).catch(function(error){
+    $(resultsImage).append($("<img>", {
+        src: `${sideImageUrl}`
+      }));
 
-
+});
 
 
 
@@ -81,7 +87,14 @@ function nextId() {
     
   console.log(sideImageUrl); //ToDo:  append the created DOM element****
 
-  };
+
+  $(resultsImage).append($("<img>", {
+    src: `${sideImageUrl}`
+  }));
+ 
+};
+ 
+
 
 
 
@@ -156,6 +169,7 @@ function getAndDrawCar() {
   
     getAndDrawCar();
   }
+
 
 //Sets it off
 //main()
