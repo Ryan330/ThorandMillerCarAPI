@@ -6,7 +6,6 @@ var resultsImage = document.querySelector(resultsImageSelector);
 var resultsTitleSelector = "[data-targetCarTitle]";
 var resultsTitle = document.querySelector(resultsTitleSelector);
 
-
 //retrieve local storage car ID
 var modelIDKey = localStorage.getItem("modelIDKey");
 console.log(modelIDKey);
@@ -36,15 +35,13 @@ const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey
             console.log(error);
 
         });
-    }
+    }//ends vehicleInfoArray function
 ).catch(function(error){
     $(resultsImage).append($("<img>", {
         src: "images/noImage.jpg"
       }));
 
-});
-
-
+});//ends .catch function
 
 
 // Makes XMLHttpRequest()
@@ -57,8 +54,6 @@ const $carInfo    = $('[data-car-info]');
 
 
 //Creates the container for the car's info
-
-
   var createCard = (result) => {
     var $carCard = $("<div>");
     var $carInfoList = $("<ul>");
@@ -228,13 +223,11 @@ function drawCar(carData) {
     console.log(carData);
     var $carCard = createCard(carData);
       
-      
    //Empty out the current car info
    $carInfo.html('');
       
    //Put our new car card in the box
    $carInfo.append($carCard);
-  
 }
 
 //Makes Ajax req, then draws car info to page
@@ -245,7 +238,6 @@ function getAndDrawCar() {
   
   //Attaches event listeners to buttons.
   //Makes initial Ajax request for first car
-
 
 //Sets it off
 //main()
@@ -258,8 +250,6 @@ var imgURL = "https://api.fuelapi.com/v1/json/vehicle/19100/?api_key=daefd14b-9f
 //          var imgID = data.id;
 //          
 //        });
-//
-//
 //
 //$(nameOption).append($("<img>", {
 //    src: `${imgID}`
