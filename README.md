@@ -15,9 +15,9 @@ The Thor & Miller car search application allows the user to generate information
 * Visual Code
 * Fuel Car Data API
 
-##Development Process
-##1. Concept
+## Development Process
+### -Concept-
 
-##2. Web Design and API Implementation
+### -Web Design and API Implementation-
 
-##3. Challenges
+### -Project Challenges-
