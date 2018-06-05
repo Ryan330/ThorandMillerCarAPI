@@ -3,6 +3,8 @@
 var resultsImageSelector = "[data-targetImage]";
 var resultsImage = document.querySelector(resultsImageSelector);
 
+var resultsTitleSelector = "[data-targetCarTitle]";
+var resultsTitle = document.querySelector(resultsTitleSelector);
 
 //retrieve local storage car ID
 var modelIDKey = localStorage.getItem("modelIDKey");
@@ -36,7 +38,7 @@ const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey
     }//ends vehicleInfoArray function
 ).catch(function(error){
     $(resultsImage).append($("<img>", {
-        src: `${sideImageUrl}`
+        src: "images/noImage.jpg"
       }));
 
 });//ends .catch function
@@ -50,43 +52,171 @@ const $prevButton = $('[data-control-prev]');
 const $nextButton = $('[data-control-next]');
 const $carInfo    = $('[data-car-info]');
 
-//Calculates the previous ID 
-function prevId() {
-
-  if (currentId > 1) {
-      currentId = currentId - 1;
-  }
-}
-
-function nextId() {
-    currentId = currentId + 1;
-}
 
 //Creates the container for the car's info
   var createCard = (result) => {
-    var $carCard = $('<div>');
-    var $carInfoList = $('<ul>');
+    var $carCard = $("<div>");
+    var $carInfoList = $("<ul>");
     $carCard.append($carInfoList);
-    var $results = $('.results'); //targeting results in HTML
+    var $results = $(".results"); //targeting results in HTML
     $results.append($carCard);
-  
-    var $trim = $('<li>').text(result.trim);
-    $carInfoList.append($trim);
-  
-    var $driveTrain = $('<li>').text(result.drivetrain)
-    $carInfoList.append($driveTrain);
+
+
+    //Car Title
+    $(resultsTitle).append($("<span>", {
+      text: `(${yearIDKey})`
+    }));
     
-    var $sideImage = $('<li>');
-    var sideImageUrl = result.products[0].productFormats[0].assets.find(asset => {
-      return asset.shotCode.code === '037'
+    $(resultsTitle).append($("<span>", {
+      text: `${makeIDKey}:`
+    }));
+
+    $(resultsTitle).append($("<span>", {
+      text: `${modelIDKey}`
+    }));
+  
+
+    //Car Information
+    //Trim
+    $($results).append($("<li>", {
+      text: `Trim: ${result.trim}`
+    }));
+  
+    //Drivetrain
+    $($results).append($("<li>", {
+      text: `Drivetrain: ${result.drivetrain}`
+    }));
+
+    //Number of Doors
+    $($results).append($("<li>", {
+      text: `Number of Doors: ${result.num_doors}`
+    }));
+
+    //Body Type
+    $($results).append($("<li>", {
+      text: `Body Type: ${result.bodytype}`
+    }));
+
+
+
+    //Car Images
+    var $carImage = $("<span>");
+
+    //Image Array
+    //First: Front View | Second: Side View | Third: Rear View
+    var imgArray = ["046", "037", "121", "059", "050", "156", "173"];
+    var i = 0;
+
+    //Load Car Images
+    var carImageUrl = result.products[0].productFormats[0].assets.find(asset => {
+      return asset.shotCode.code === imgArray[i];
     }).url;
     
-  console.log(sideImageUrl); //ToDo:  append the created DOM element****
+    console.log(carImageUrl); //ToDo:  append the created DOM element****
 
-  $(resultsImage).append($("<img>", {
-    src: `${sideImageUrl}`
-  }));//ends resultImage
-};//ends createCard
+
+
+    //Display Car Image
+    $(resultsImage).append($("<img>", {
+      src: `${carImageUrl}`,
+      title: `${yearIDKey} ${makeIDKey} ${modelIDKey}`
+    }));
+
+
+    //Previous Button
+      $prevButton.on('click', function (event) {
+        event.preventDefault();
+
+
+        //Go to previous image in image collection
+        i -= 1;
+
+
+        //Maintain Image Array Index
+        if (i < 0) {i = imgArray.length - 1}; 
+
+
+        //Load Car Images
+        carImageUrl = result.products[0].productFormats[0].assets.find(asset => {
+          return asset.shotCode.code === imgArray[i];
+        }).url;
+
+
+        //Display Car Image
+        $(resultsImage).empty().append($("<img>", {
+          src: `${carImageUrl}`,
+          title: `${yearIDKey} ${makeIDKey} ${modelIDKey}`
+        }));
+      
+    });
+
+
+        //Next Button
+        $nextButton.on('click', function (event) {
+          event.preventDefault();
+  
+  
+          //Go to previous image in image collection
+          i += 1;
+  
+  
+          //Maintain Image Array Index
+          if (i > imgArray.length) {i = 0}; 
+  
+  
+          //Load Car Images
+          carImageUrl = result.products[0].productFormats[0].assets.find(asset => {
+            return asset.shotCode.code === imgArray[i];
+          }).url;
+  
+  
+          //Display Car Image
+          $(resultsImage).empty().append($("<img>", {
+            src: `${carImageUrl}`,
+            title: `${yearIDKey} ${makeIDKey} ${modelIDKey}`
+          }));
+        
+      });
+ 
+};
+ 
+
+
+
+
+
+////Creates a list of specific car infomation
+//function createList(carData) {
+//    var $carInfoList = $('<ul>');
+
+
+    // Object.keys(carData).forEach(function (key) {
+    //     var val = carData[key];
+    
+    //     if (Array.isArray(val)) {
+    //       if (val.length > 0 && val[0] !== '') {
+    //         console.log(val);
+    //         var arrayString = val.join(', ');
+    //         var $carInfoItem = $('<li>', {
+    //           text: `${key}: [${arrayString}]`
+    //         });
+    
+    //         $carInfoList.append($carInfoItem);
+    //       }
+    //     } else if (val !== '') {
+    //       var $carInfoItem = $('<li>', {
+    //         text: `${key}: ${val}`
+    //       });
+    
+    //       $carInfoList.append($carInfoItem);
+    //     }
+    
+    //   });
+    
+    //   return $carInfoList;
+    // }
+
+    
 
 //Draws car info to the page
 function drawCar(carData) {
@@ -108,22 +238,6 @@ function getAndDrawCar() {
   
   //Attaches event listeners to buttons.
   //Makes initial Ajax request for first car
-  function main() {
-  
-    $prevButton.on('click', function (event) {
-      event.preventDefault();
-      prevId();
-      getAndDrawCar();
-    });
-  
-    $nextButton.on('click', function (event) {
-      event.preventDefault();
-      nextId();
-      getAndDrawCar();
-    });
-  
-    getAndDrawCar();
-  }
 
 //Sets it off
 //main()

@@ -1,8 +1,11 @@
 /*Webpage Design*/
 body {
-    background-image: url("../images/backgrounds/bg1.jpg");
+    background-image: url("../images/backgrounds/aboutBG.jpg");
     background-size: cover;
     overflow-x: hidden;
+
+    font-family: Roboto;
+    font-size: 16px;
 
     display: flex;
     min-height: 100vh;
@@ -290,8 +293,8 @@ body {
     background-color: rgb(0, 119, 255);
     color: rgb(255, 255, 255);
 
+    font-family: Roboto;
     font-size: 22px;
-    font-weight: bold;
 
     border: none;
     padding: 10px 30px;
@@ -319,4 +322,10 @@ body {
 /*Button Visible Effect*/
 .buttonHidden {
     display: none;
+}
+
+/*Image Result*/
+.contentBox img {
+    height: 300px;
+    width: 400px;
 }
