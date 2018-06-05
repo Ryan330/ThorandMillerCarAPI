@@ -12,7 +12,7 @@ The Thor & Miller car search application allows the user to generate information
 * JavaScript
 * JQuery
 * AJAX
-* Visual Code
+* Visual Studio Code
 * Postman
 * Fuel Car Data API
 
