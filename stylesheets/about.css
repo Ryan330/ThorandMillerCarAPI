@@ -1,7 +1,6 @@
 /*Webpage Design*/
 body {
-    background-image: url("../images/backgrounds/bg1.jpg");
-    background-size: cover;
+    background-image: url("../images/backgrounds/aboutBG.jpg");
     overflow-x: hidden;
 
     display: flex;

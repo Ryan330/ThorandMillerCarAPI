@@ -110,9 +110,7 @@ var imgURL = "https://api.fuelapi.com/v1/json/vehicle/19100/?api_key=daefd14b-9f
 $.get(imgURL, 
     function (response) {
         response.forEach(function (data) {
-            if 
-          var imgID = data.id;
-          
+            var imgID = data.id;
         });
 
 
@@ -120,5 +118,5 @@ $.get(imgURL,
 
 
 $(nameOption).append($("<img>", {
-    src: `${imgID}`
+    src: `${imgID}`;
 }));

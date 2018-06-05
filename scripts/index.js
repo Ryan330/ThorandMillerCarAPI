@@ -130,7 +130,7 @@ nameOption.addEventListener("change", function () {
 //  Action after submit button has been pressed
 
 $('input[type=submit]').click(function() {
-  window.location.href = "../results.html"
+  window.location.href = "results.html"
 });
 
 
