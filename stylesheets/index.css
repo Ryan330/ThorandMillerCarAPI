@@ -66,7 +66,6 @@ body {
 
 
 
-
 /*Header Design*/
 .customHeader {
     background-color: rgb(255, 255, 255);
@@ -320,6 +319,7 @@ body {
 /*Button Visible Effect*/
 .buttonHidden {
     display: none;
+
 }
 
 /*About Image*/
@@ -345,4 +345,5 @@ body {
 .contentBox a {
     text-decoration: none;
     list-style-type: none;
+
 }
