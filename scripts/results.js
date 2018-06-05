@@ -4,6 +4,7 @@ var resultsImageSelector = "[data-targetImage]";
 var resultsImage = document.querySelector(resultsImageSelector);
 
 
+
 //retrieve local storage car ID
 var modelIDKey = localStorage.getItem("modelIDKey");
 console.log(modelIDKey);
@@ -67,6 +68,7 @@ function nextId() {
 
 //Creates the container for the car's info
 
+
   var createCard = (result) => {
     var $carCard = $('<div>');
     var $carInfoList = $('<ul>');
@@ -129,6 +131,7 @@ function nextId() {
     
     //   return $carInfoList;
     // }
+
     
 
 //Draws car info to the page
@@ -188,3 +191,4 @@ var imgURL = "https://api.fuelapi.com/v1/json/vehicle/19100/?api_key=daefd14b-9f
 //$(nameOption).append($("<img>", {
 //    src: `${imgID}`
 //}));
+

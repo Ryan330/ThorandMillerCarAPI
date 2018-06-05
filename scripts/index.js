@@ -19,6 +19,15 @@ var modelOption = document.querySelector(modelOptionSelect);
 var submitButtonSelect = "[data-targetButton]";
 var submitButton = document.querySelector(submitButtonSelect);
 
+var yearOptionSelect = "[data-targetYear]";
+var yearOption = document.querySelector(yearOptionSelect);
+
+var modelOptionSelect = "[data-targetModel]";
+var modelOption = document.querySelector(modelOptionSelect);
+
+var submitButtonSelect = "[data-targetButton]";
+var submitButton = document.querySelector(submitButtonSelect);
+
 
 //Data Function (Make)
 $.get(dataURL, function (data) {
@@ -32,6 +41,7 @@ $.get(dataURL, function (data) {
         var carInfo = data[key];
         dataArray.push(carInfo);
     });
+
 
 
     //Load and Implement Data in HTML
@@ -71,6 +81,7 @@ nameOption.addEventListener("change", function () {
  console.log(dataModelURL);
 
 
+
 //**Year dropdown**
   const dataYearURL = "https://api.fuelapi.com/v1/json/modelYears/52/&api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
 
@@ -104,12 +115,14 @@ nameOption.addEventListener("change", function () {
         var modelMake = data.name;
         var carModelID = data.id;
 
+
           $(modelOption).append($("<option>", {
             value: `${modelMake}`,
             text: `${modelMake}`
           }));
       });//end forEach
   }); //end .get
+
 
   yearOption.addEventListener("change", function(){
     console.log(event.target.value);
@@ -135,9 +148,6 @@ nameOption.addEventListener("change", function () {
 $('input[type=submit]').click(function() {
   window.location.href = "results.html"
 });
-
-
-
 
 
 
