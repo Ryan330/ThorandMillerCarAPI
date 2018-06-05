@@ -33,6 +33,8 @@ The most important task when working with APIs is to create the connection betwe
 ### -Project Challenges-
 Unfortunately, the API is not a free source which led us to facing limitations which we have to work around. The API's data is also listed in a fairly awkward format which forced us to go outside of the usual process of data retrieving. Because of this, the overall process of completing the API implementation lasted longer than expected. Though thanks to our hard, persistent workflow, we still managed to meet our project deadline.
 
+<img src="images/screenshots/screenShot3.png" width="600" height="350">
+
 ## License
 ### Copyright 2018 Ryan Miller, Thor Denson
 
