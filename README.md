@@ -5,3 +5,19 @@ The Thor & Miller car search application allows the user to generate information
 ## Authors
 * **Ryan Miller**
 * **Thor Denson**
+
+## Built With
+* HTML
+* CSS
+* JavaScript
+* JQuery
+* AJAX
+* Visual Code
+* Fuel Car Data API
+
+##Development Process
+###1. Concept
+
+###2. Web Design and API Implementation
+
+###3. Challenges
