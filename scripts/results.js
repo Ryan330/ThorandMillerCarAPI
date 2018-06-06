@@ -1,12 +1,12 @@
 
-//HTML Targets
+//HTML Targets (10)
 var resultsImageSelector = "[data-targetImage]";
 var resultsImage = document.querySelector(resultsImageSelector);
 
 var resultsTitleSelector = "[data-targetCarTitle]";
 var resultsTitle = document.querySelector(resultsTitleSelector);
 
-//retrieve local storage car ID
+//retrieve car ID from local storage  (11)
 var modelIDKey = localStorage.getItem("modelIDKey");
 console.log(modelIDKey);
 
@@ -16,27 +16,27 @@ console.log(makeIDKey);
 var yearIDKey = localStorage.getItem("yearIDKey");
 console.log(yearIDKey);
 
-
+// values are plugged in but have to be written out. API goes from integer id to word format (12)
 const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey+"&model="+modelIDKey+"&make="+makeIDKey+"&api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
  console.log(dataModelURL);
 
  $.get(dataModelURL,
     function(vehicleInfoArray) {
-        console.log(vehicleInfoArray[0].id);
+        console.log(vehicleInfoArray[0].id); //retrieves id to plug into the URL(13)
         var vehicleID = vehicleInfoArray[0].id;
         const mediaURL = "https://api.fuelapi.com/v1/json/vehicle/"+vehicleID+"/?api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1";
         console.log(mediaURL);
 
         $.get(mediaURL, function(dataMedia){
-            console.log(dataMedia.products);
+            console.log(dataMedia.products); //shows list of all possible media files for the car (14)
             createCard(dataMedia);
         
         }).catch(function(error){
-            console.log(error);
+            console.log(error); 
 
         });
     }//ends vehicleInfoArray function
-).catch(function(error){
+).catch(function(error){                //error to catch if there is no image in array (15)
     $(resultsImage).append($("<img>", {
         src: "images/noImage.jpg"
       }));
@@ -44,8 +44,8 @@ const dataModelURL = "https://api.fuelapi.com/v1/json/vehicles/?year="+yearIDKey
 });//ends .catch function
 
 
-// Makes XMLHttpRequest()
-var request = new XMLHttpRequest();
+// Makes XMLHttpRequest() (16)
+var request = new XMLHttpRequest(); 
 
 // jQuery-ified versions of our DOM elements
 const $prevButton = $('[data-control-prev]');
@@ -53,7 +53,7 @@ const $nextButton = $('[data-control-next]');
 const $carInfo    = $('[data-car-info]');
 
 
-//Creates the container for the car's info
+//Creates the container for the car's info (17)
   var createCard = (result) => {
     var $carCard = $("<div>");
     var $carInfoList = $("<ul>");
@@ -62,7 +62,7 @@ const $carInfo    = $('[data-car-info]');
     $results.append($carCard);
 
 
-    //Car Title
+    //Car Title  
     $(resultsTitle).append($("<span>", {
       text: `(${yearIDKey})`
     }));
@@ -76,7 +76,7 @@ const $carInfo    = $('[data-car-info]');
     }));
   
 
-    //Car Information
+    //Car Information: lists info and images into card (18)
     //Trim
     $($results).append($("<li>", {
       text: `Trim: ${result.trim}`
@@ -97,12 +97,10 @@ const $carInfo    = $('[data-car-info]');
       text: `Body Type: ${result.bodytype}`
     }));
 
-
-
     //Car Images
     var $carImage = $("<span>");
 
-    //Image Array
+    //Image Array    Array of shot calls to append to the end of the URL (19)
     //First: Front View | Second: Side View | Third: Rear View
     var imgArray = ["046", "037", "121", "059", "050", "156", "173"];
     var i = 0;
@@ -112,9 +110,7 @@ const $carInfo    = $('[data-car-info]');
       return asset.shotCode.code === imgArray[i];
     }).url;
     
-    console.log(carImageUrl); //ToDo:  append the created DOM element****
-
-
+    console.log(carImageUrl); 
 
     //Display Car Image
     $(resultsImage).append($("<img>", {
@@ -122,25 +118,20 @@ const $carInfo    = $('[data-car-info]');
       title: `${yearIDKey} ${makeIDKey} ${modelIDKey}`
     }));
 
-
     //Previous Button
       $prevButton.on('click', function (event) {
         event.preventDefault();
 
-
         //Go to previous image in image collection
         i -= 1;
-
 
         //Maintain Image Array Index
         if (i < 0) {i = imgArray.length - 1}; 
 
-
-        //Load Car Images
+        //Load Car Images     // loads car image to card (20)
         carImageUrl = result.products[0].productFormats[0].assets.find(asset => {
           return asset.shotCode.code === imgArray[i];
         }).url;
-
 
         //Display Car Image
         $(resultsImage).empty().append($("<img>", {
@@ -150,27 +141,22 @@ const $carInfo    = $('[data-car-info]');
       
     });
 
-
         //Next Button
         $nextButton.on('click', function (event) {
           event.preventDefault();
   
-  
           //Go to previous image in image collection
           i += 1;
   
-  
           //Maintain Image Array Index
           if (i > imgArray.length) {i = 0}; 
-  
   
           //Load Car Images
           carImageUrl = result.products[0].productFormats[0].assets.find(asset => {
             return asset.shotCode.code === imgArray[i];
           }).url;
   
-  
-          //Display Car Image
+          //Display Car Image   calls on stored inputs and plugs them into URL
           $(resultsImage).empty().append($("<img>", {
             src: `${carImageUrl}`,
             title: `${yearIDKey} ${makeIDKey} ${modelIDKey}`
@@ -180,43 +166,6 @@ const $carInfo    = $('[data-car-info]');
  
 };
  
-
-
-
-
-
-////Creates a list of specific car infomation
-//function createList(carData) {
-//    var $carInfoList = $('<ul>');
-
-
-    // Object.keys(carData).forEach(function (key) {
-    //     var val = carData[key];
-    
-    //     if (Array.isArray(val)) {
-    //       if (val.length > 0 && val[0] !== '') {
-    //         console.log(val);
-    //         var arrayString = val.join(', ');
-    //         var $carInfoItem = $('<li>', {
-    //           text: `${key}: [${arrayString}]`
-    //         });
-    
-    //         $carInfoList.append($carInfoItem);
-    //       }
-    //     } else if (val !== '') {
-    //       var $carInfoItem = $('<li>', {
-    //         text: `${key}: ${val}`
-    //       });
-    
-    //       $carInfoList.append($carInfoItem);
-    //     }
-    
-    //   });
-    
-    //   return $carInfoList;
-    // }
-
-    
 
 //Draws car info to the page
 function drawCar(carData) {
@@ -243,15 +192,5 @@ function getAndDrawCar() {
 //main()
 
 var imgURL = "https://api.fuelapi.com/v1/json/vehicle/19100/?api_key=daefd14b-9f2b-4968-9e4d-9d4bb4af01d1&productID=1";
-//
-//$.get(imgURL, 
-//    function (response) {
-//        response.forEach(function (data) {
-//          var imgID = data.id;
-//          
-//        });
-//
-//$(nameOption).append($("<img>", {
-//    src: `${imgID}`
-//}));
+
 
